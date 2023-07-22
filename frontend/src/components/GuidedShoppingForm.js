@@ -26,14 +26,14 @@ const GuidedShoppingForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4444/preference/preferences', preferences);
+      const response = await axios.post('https://odd-jade-crow-slip.cyclic.app/preference/preferences', preferences);
       console.log('Preference saved successfully:', response.data);
 
       // Save preferences to localStorage after successful submission
       localStorage.setItem('userPreferences', JSON.stringify(preferences));
 
       // Fetch matched phones from the backend
-      const matchedResponse = await axios.get('http://localhost:4444/preference/matched-phones', {
+      const matchedResponse = await axios.get('https://odd-jade-crow-slip.cyclic.app/preference/matched-phones', {
         params: { preferences: JSON.stringify(preferences) },
       });
       setMatchedPhones(matchedResponse.data);
