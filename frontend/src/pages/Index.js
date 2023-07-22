@@ -20,8 +20,8 @@ function Index(props) {
             <img src="/mock.png" alt={phone.brand} style={{ width: '100%', marginBottom: '10px' }} />
             <h3>{phone.brand}</h3>
             <h3>{phone.model}</h3>
-            <p>Data: {phone.dataPlan}</p>
-            <p>Talk Time: {phone.talkTime}</p>
+            <p className="text-gray-500">Data: {phone.dataPlan}</p>
+            <p className="text-gray-500">Talk Time: {phone.talkTime}</p>
             <p>Price: £{phone.budget}</p>
           </div>
         ))}

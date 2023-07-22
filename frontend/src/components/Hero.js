@@ -6,7 +6,7 @@ function Hero() {
         <div className="flex flex-col py-40 px-10 md:flex-row items-center justify-center py-10 md:py-20">
             <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
                 <h1 className="text-4xl md:text-6xl font-bold">Welcome to <span className="text-indigo-600">Guided</span></h1>
-                <p className="text-lg md:text-xl mt-4">Allow us to find the perfect product for you</p>
+                <p className="text-lg md:text-xl mt-4">Finding the perfect product for you</p>
                 <ScrollButton />
             </div>
             <div className="mt-6 md:mt-0 md:ml-10 hidden md:block">
