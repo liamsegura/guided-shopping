@@ -11,9 +11,9 @@ function Index(props) {
     <div>
       <HelpPopup />
      
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '20px', justifyContent: "center"}}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '20px', padding: '1rem', justifyContent: "center"}}>
         {phones.map((phone) => (
-          <div key={phone._id} style={{ border: '1px solid #ccc', padding: '10px', width: '150px' }}>
+          <div key={phone._id} style={{ padding: '10px', width: '150px' }}>
             <img src="/mock.png" alt={phone.brand} style={{ width: '100%', marginBottom: '10px' }} />
             <h3>{phone.brand}</h3>
             <p>Data: {phone.dataPlan}</p>

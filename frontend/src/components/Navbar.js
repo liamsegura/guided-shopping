@@ -8,9 +8,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-500 py-4 px-8 md:px-16">
+    <nav className="py-4 px-8 md:px-16">
       <div className="flex justify-between items-center">
-        <div className="text-white font-bold text-xl">guided</div>
+        <div className="text-indigo-500 font-bold text-xl">guided</div>
 
         {/* Hamburger Menu */}
         <div className="md:hidden">
@@ -20,7 +20,7 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             <svg
-              className="h-6 w-6 fill-current"
+              className="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -34,16 +34,16 @@ const Navbar = () => {
 
         {/* Full Menu */}
         <div className="hidden md:flex space-x-4">
-          <a href="#" className="text-white hover:text-gray-200">
+          <a href="#" className="hover:text-gray-200">
             Home
           </a>
-          <a href="#" className="text-white hover:text-gray-200">
+          <a href="#" className="hover:text-gray-200">
             Products
           </a>
-          <a href="#" className="text-white hover:text-gray-200">
+          <a href="#" className="hover:text-gray-200">
             About
           </a>
-          <a href="#" className="text-white hover:text-gray-200">
+          <a href="#" className="hover:text-gray-200">
             Contact
           </a>
         </div>
@@ -54,25 +54,25 @@ const Navbar = () => {
         <div className="md:hidden mt-4">
           <a
             href="#"
-            className="block text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
           >
             Home
           </a>
           <a
             href="#"
-            className="block text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
           >
             Products
           </a>
           <a
             href="#"
-            className="block text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
           >
             About
           </a>
           <a
             href="#"
-            className="block text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
           >
             Contact
           </a>
