@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import "./App.css";
-import { Heading } from "./styles";
+import "./styles.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
-      <Heading>WORKOUT TRACKER</Heading>
+    <Navbar />
       <div className="App">
         <Outlet />
       </div>

@@ -1,30 +1,30 @@
-import { useLoaderData, Form, Link } from "react-router-dom";
-import { Flex, Card } from "../styles";
+import { useLoaderData } from "react-router-dom";
+import HelpPopup from "../components/HelpPopup";
+
+
+
 function Index(props) {
   
-  const posts = useLoaderData();
+  const phones = useLoaderData();
 
   return (
     <div>
-      <Form action="/create" method="post">
-        <input type="text" name="name" required="true"/>
-        <input type="checkbox" name="tasty" />
-        <button>Create New post</button>
-      </Form>
-      <Flex>
-        {posts.map((post) => (
-          <Card key={post._id}>
-            <Link to={`/${post._id}`}>
-              <h1>{post.name}</h1>
-            </Link>
-            <h2>{post.tasty ? "It's Tasty" : "Not Tasty"}</h2>
-            <Form action={`/delete/${post._id}`} method="post">
-            <button>Delete post</button>
-        </Form>
-          </Card>
+      <HelpPopup />
+     
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '20px', justifyContent: "center"}}>
+        {phones.map((phone) => (
+          <div key={phone._id} style={{ border: '1px solid #ccc', padding: '10px', width: '150px' }}>
+            <img src="/mock.png" alt={phone.brand} style={{ width: '100%', marginBottom: '10px' }} />
+            <h3>{phone.brand}</h3>
+            <p>Data: {phone.dataPlan}</p>
+            <p>Talk Time: {phone.talkTime}</p>
+            <p>Price: £{phone.budget}</p>
+          </div>
         ))}
-      </Flex>
+      </div>
+      
     </div>
+   
   );
 }
 
