@@ -52,7 +52,7 @@ const GuidedShoppingForm = () => {
         {formSubmitted ? (
           matchedPhones.length > 0 ? (
             <div className="mt-8">
-              <h2 className="text-2xl font-bold mb-4">We think you'll love these:</h2>
+              <h2 className="text-2xl font-bold mb-4">We think you'll love these</h2>
               <ul className="grid gap-4 grid-cols-2">
                 {/* Display matched phones */}
                 {matchedPhones.map((phone) => (
@@ -60,6 +60,7 @@ const GuidedShoppingForm = () => {
                     {/* Replace src with the actual image URL */}
                     <img src="/mock.png" alt={phone.brand} style={{ width: '100%', marginBottom: '10px' }} />
             <h3>{phone.brand}</h3>
+            <h3>{phone.model}</h3>
             <p>Data: {phone.dataPlan}</p>
             <p>Talk Time: {phone.talkTime}</p>
             <p>Price: £{phone.budget}</p>

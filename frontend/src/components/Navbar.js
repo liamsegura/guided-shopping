@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="py-4 px-8 md:px-16">
       <div className="flex justify-between items-center">
-        <div className="text-indigo-500 font-bold text-xl">guided</div>
+        <div className="text-indigo-600 font-bold text-xl">guided</div>
 
         {/* Hamburger Menu */}
         <div className="md:hidden">
