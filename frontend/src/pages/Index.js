@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import HelpPopup from "../components/HelpPopup";
+import Hero from "../components/Hero";
 
 
 
@@ -8,10 +9,12 @@ function Index(props) {
   const phones = useLoaderData();
 
   return (
-    <div>
+    <div >
       <HelpPopup />
+      <Hero />
+      
      
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '20px', padding: '1rem', justifyContent: "center"}}>
+      <div id="sectionBelow" className="p-1 sm:p-20" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '20px', justifyContent: "center"}}>
         {phones.map((phone) => (
           <div key={phone._id} style={{ padding: '10px', width: '150px' }}>
             <img src="/mock.png" alt={phone.brand} style={{ width: '100%', marginBottom: '10px' }} />

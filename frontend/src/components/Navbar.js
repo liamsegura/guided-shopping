@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="py-4 px-8 md:px-16">
       <div className="flex justify-between items-center">
-        <div className="text-indigo-600 font-bold text-xl">guided</div>
+        <div className="text-indigo-600 font-bold text-xl">Guided</div>
 
         {/* Hamburger Menu */}
         <div className="md:hidden">
@@ -34,16 +34,11 @@ const Navbar = () => {
 
         {/* Full Menu */}
         <div className="hidden md:flex space-x-4">
-          <a href="#" className="hover:text-gray-200">
-            Home
-          </a>
-          <a href="#" className="hover:text-gray-200">
-            Products
-          </a>
-          <a href="#" className="hover:text-gray-200">
+         
+          <a href="#" className="hover:text-gray-600">
             About
           </a>
-          <a href="#" className="hover:text-gray-200">
+          <a href="#" className="hover:text-gray-600">
             Contact
           </a>
         </div>
@@ -52,18 +47,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden mt-4">
-          <a
-            href="#"
-            className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
-          >
-            Home
-          </a>
-          <a
-            href="#"
-            className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
-          >
-            Products
-          </a>
+      
           <a
             href="#"
             className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"

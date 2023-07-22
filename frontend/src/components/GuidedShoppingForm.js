@@ -48,7 +48,7 @@ const GuidedShoppingForm = () => {
 
   return (
     <div>
-      <div className="max-w-lg mx-auto p-4 bg-white shadow rounded-lg">
+      <div className="max-w-lg mx-2 p-4 m-2 bg-white shadow rounded-lg">
         {formSubmitted ? (
           matchedPhones.length > 0 ? (
             <div className="mt-8">
@@ -74,7 +74,7 @@ const GuidedShoppingForm = () => {
         ) : (
           // Show the form when it's not submitted
           
-          <div className="max-h-96 overflow-auto">
+          <div className="max-h-96 overflow-auto p-1">
              <h2 className="text-2xl font-bold mb-4">What are you looking for?</h2>
         
             <form onSubmit={handleSubmit}>
@@ -82,7 +82,7 @@ const GuidedShoppingForm = () => {
                 <label className="block text-sm font-medium text-gray-700">Budget in £:</label>
                 <input
                   type="number"
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50"
                   value={preferences.budget}
                   onChange={(e) => setPreferences({ ...preferences, budget: e.target.value })}
                   required
