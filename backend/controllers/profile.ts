@@ -3,6 +3,7 @@ import express from "express";
 const router = express.Router();
 import Profile from "../models/profile.js";
 import Phone from "../models/phone.js";
+import QueryString from "qs";
 
 // Create a new user profile
 router.post("/profiles", async (req, res) => {
@@ -36,7 +37,14 @@ router.post("/profiles", async (req, res) => {
 
 router.get("/matched-phones", async (req, res) => {
   try {
-    const userProfiles = JSON.parse(req.query.profiles); // Parse profiles from the query string
+    let userProfiles: QueryString.ParsedQs;
+
+    if (typeof req.query.profiles === "string") {
+      userProfiles = JSON.parse(req.query.profiles) as QueryString.ParsedQs;
+    } else {
+      // Handle the case when req.query.profiles is already parsed
+      userProfiles = req.query.profiles as QueryString.ParsedQs;
+    }
     console.log("Parsed user profiles:", userProfiles);
     // Use your matching algorithm to retrieve the top 10 phones based on userprofiles
     const matchedPhones = await Phone.find({
@@ -44,7 +52,7 @@ router.get("/matched-phones", async (req, res) => {
         { dataPlan: { $gte: userProfiles.dataPlan } },
         { talkTime: { $gte: userProfiles.talkTime } },
         { budget: { $lte: userProfiles.budget } },
-        { color: userProfiles.color }, // Add color matching
+        { color: userProfiles.color as string },
       ],
     }).limit(2);
 

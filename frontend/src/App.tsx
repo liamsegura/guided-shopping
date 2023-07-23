@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import "./styles.css";
 import Navbar from "./components/Navbar";
 import HelpPopup from "./components/HelpPopup";
+import React from "react";
 
 function App() {
   return (

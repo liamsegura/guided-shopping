@@ -1,9 +1,25 @@
+import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 
-function Index(props) {
-  const phones = useLoaderData();
+interface Phone {
+  _id: string;
+  brand: string;
+  model: string;
+  budget: number;
+  dataPlan: number;
+  talkTime: number;
+  image: string;
+  color: string;
+}
+
+function Index() {
+  const data = useLoaderData();
+
+  const phones: Phone[] = data as Phone[];
+
+  console.log(phones);
 
   if (!phones) {
     return (
