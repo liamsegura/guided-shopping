@@ -79,6 +79,6 @@ body {
   top: 98%;
   right: 24px;
   border-width: 0 12px 12px 12px;
-  border-color: transparent transparent rgb(79 70 229) transparent;
+  border-color: transparent transparent rgb(255, 255, 255) transparent;
   transform: rotate(180deg);
 }

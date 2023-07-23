@@ -140,7 +140,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
                   Colour:
                 </label>
                 <select
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
                   value={profiles.color}
                   onChange={(e) =>
                     setProfiles({
@@ -164,7 +164,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
                   Data Plan:
                 </label>
                 <select
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
                   value={profiles.dataPlan}
                   onChange={(e) =>
                     setProfiles({
@@ -186,7 +186,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
                   Talk Time:
                 </label>
                 <select
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
                   value={profiles.talkTime}
                   onChange={(e) =>
                     setProfiles({
@@ -204,7 +204,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
               <button
                 type="submit"
-                className="w-full px-4 py-2 mt-4 text-white font-semibold bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full px-4 py-2 mt-4 text-white font-semibold bg-emerald-600 rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
               >
                 Submit
               </button>
