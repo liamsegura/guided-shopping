@@ -7,14 +7,31 @@ import Phone from '../models/phone.js';
 
 // Create a new user preference
 router.post('/preferences', async (req, res) => {
-  try {
-    const newPreferenceData = req.body;
-    const newPreference = await Preference.create(newPreferenceData);
-    res.status(201).json(newPreference);
-  } catch (error) {
-    res.status(500).json({ error: 'An error occurred while creating the preference' });
-  }
-});
+    try {
+      const newPreferenceData = req.body;
+      console.log(newPreferenceData)
+      const selectedPhone = newPreferenceData.choice;
+      if (!selectedPhone) {
+        return res.status(400).json({ error: 'Choice not provided' });
+      }
+  
+      // Find the corresponding phone from the database using the selectedPhone ID
+      const phone = await Phone.findById(selectedPhone);
+      if (!phone) {
+        return res.status(404).json({ error: 'Phone not found' });
+      }
+  
+      // Associate the phone's _id with the preference
+      newPreferenceData.choice = phone._id;
+  
+      // Save the preference with the associated phone's _id
+      const newPreference = await Preference.create(newPreferenceData);
+      res.status(201).json(newPreference);
+    } catch (error) {
+      console.error('Error saving preference:', error);
+      res.status(500).json({ error: 'An error occurred while creating the preference' });
+    }
+  });
 
 router.get('/matched-phones', async (req, res) => {
     try {

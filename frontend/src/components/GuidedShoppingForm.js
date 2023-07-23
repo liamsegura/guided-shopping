@@ -15,6 +15,16 @@ const GuidedShoppingForm = () => {
   // State to track whether the form has been submitted
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  const [selectedPhone, setSelectedPhone] = useState(null);
+
+  
+  const [showSaveButton, setShowSaveButton] = useState(false);
+
+  const handlePhoneClick = (phoneId) => {
+    setSelectedPhone(phoneId);
+    setShowSaveButton(true);
+  };
+
   // Load preferences from localStorage when the component mounts
   useEffect(() => {
     const savedPreferences = JSON.parse(localStorage.getItem('userPreferences'));
@@ -26,12 +36,7 @@ const GuidedShoppingForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('https://odd-jade-crow-slip.cyclic.app/preference/preferences', preferences);
-      console.log('Preference saved successfully:', response.data);
-
-      // Save preferences to localStorage after successful submission
-      localStorage.setItem('userPreferences', JSON.stringify(preferences));
-
+   
       // Fetch matched phones from the backend
       const matchedResponse = await axios.get('https://odd-jade-crow-slip.cyclic.app/preference/matched-phones', {
         params: { preferences: JSON.stringify(preferences) },
@@ -46,6 +51,37 @@ const GuidedShoppingForm = () => {
     }
   };
 
+  const handleSavePreference = async () => {
+    try {
+      if (selectedPhone) {
+        const preferencesWithChoice = { ...preferences, choice: selectedPhone };
+        const response = await axios.post('http://localhost:4444/preference/preferences', preferencesWithChoice);
+        console.log('Preference saved successfully:', response.data);
+  
+        // Save preferences to localStorage after successful submission
+        localStorage.setItem('userPreferences', JSON.stringify(preferencesWithChoice));
+  
+        // Fetch matched phones from the backend
+        const matchedResponse = await axios.get('http://localhost:4444/preference/matched-phones', {
+          params: { preferences: JSON.stringify(preferencesWithChoice) },
+        });
+        setMatchedPhones(matchedResponse.data);
+  
+        // Handle success, show recommendations, etc.
+        setFormSubmitted(true);
+  
+        // Reset selected phone and hide the button after saving the preference
+        setSelectedPhone(null);
+        setShowSaveButton(false);
+      }
+    } catch (error) {
+      console.error('Error saving preference:', error.message);
+      // Handle error, show error message, etc.
+    }
+  };
+  
+  
+
   return (
     <div>
       <div className="max-w-lg mx-2 p-4 m-2 bg-white shadow rounded-lg">
@@ -56,27 +92,36 @@ const GuidedShoppingForm = () => {
               <ul className="grid gap-4 grid-cols-2">
                 {/* Display matched phones */}
                 {matchedPhones.map((phone) => (
-                  <li key={phone._id} className="bg-white p-4 rounded-lg shadow-lg">
-                    {/* Replace src with the actual image URL */}
+                  <li
+                    key={phone._id}
+                    onClick={() => handlePhoneClick(phone._id)}
+                    className={`bg-white p-4 rounded-lg shadow-lg ${selectedPhone === phone._id ? 'border-4 border-indigo-500' : ''}`}
+                  >
                     <img src="/mock.png" alt={phone.brand} style={{ width: '100%', marginBottom: '10px' }} />
-            <h3>{phone.brand}</h3>
-            <h3>{phone.model}</h3>
-            <p>Data: {phone.dataPlan}</p>
-            <p>Talk Time: {phone.talkTime}</p>
-            <p>Price: £{phone.budget}</p>
+                    <h3>{phone.brand}</h3>
+                    <h3>{phone.model}</h3>
+                    <p>Data: {phone.dataPlan}</p>
+                    <p>Talk Time: {phone.talkTime}</p>
+                    <p>Price: £{phone.budget}</p>
                   </li>
                 ))}
               </ul>
+              {selectedPhone && (
+                <button
+                  onClick={handleSavePreference}
+                  className="mt-4 px-4 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                >
+                  Save Preference
+                </button>
+              )}
             </div>
           ) : (
             <p>No matched phones found.</p>
           )
         ) : (
           // Show the form when it's not submitted
-          
           <div className="max-h-96 overflow-auto p-1">
-             <h2 className="text-2xl font-bold mb-4">What are you looking for?</h2>
-        
+            <h2 className="text-2xl font-bold mb-4">What are you looking for?</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Budget in £:</label>
@@ -125,11 +170,20 @@ const GuidedShoppingForm = () => {
                 Submit
               </button>
             </form>
+            {selectedPhone && showSaveButton (
+              <button
+                onClick={handleSavePreference}
+                className="mt-4 px-4 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              >
+                Save Preference
+              </button>
+            )}
           </div>
         )}
       </div>
     </div>
   );
+  
   
   };
   

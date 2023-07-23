@@ -8,7 +8,15 @@ const catcher = (res) => (error) => res.status(400).json({error})
 
 router.get("/", async (req, res) => {
   const phones = await Phone.find({}).catch(catcher(res))
-  console.log(phones)
   res.json(phones)
 })
+
+
+router.get("/:id", async (req, res) => {
+  console.log(req.params.id)
+  const phoneResult = await Phone.findById(req.params.id).catch(catcher(res))
+  console.log(phoneResult)
+  res.json(phoneResult)
+})
+
 export default router;

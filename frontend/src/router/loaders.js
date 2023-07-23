@@ -5,3 +5,10 @@ export const indexLoader = async () => {
  const phones = await response.json()
  return phones
 }
+
+export const showLoader = async ({params}) => {
+    const response = await fetch(URL + `/phone/${params.id}`)
+    const phone = await response.json()
+    return phone
+   }
+
