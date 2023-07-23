@@ -35,7 +35,7 @@ const HelpPopup = () => {
           <p className="text-xl">Need some help?</p>
           <button
             onClick={openModal}
-            className="mt-8 px-4 py-2 bg-emerald-600 text-white font-bold rounded-lg hover:bg-gray focus:outline-none focus:ring focus:ring-gray focus:ring-opacity-50 animate-growShrink"
+            className="mt-6 px-4 py-2 bg-emerald-600 text-white font-bold rounded-lg hover:bg-gray focus:outline-none focus:ring focus:ring-gray focus:ring-opacity-50 animate-growShrink"
           >
             Find out more
           </button>
