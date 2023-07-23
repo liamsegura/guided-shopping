@@ -4,6 +4,10 @@
 
 /* styles.css */
 
+html{
+    background-color: white!important;
+}
+
 body {
     background-color: white;
   }

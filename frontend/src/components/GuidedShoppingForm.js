@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import URL from "../router/url";
-
 const GuidedShoppingForm = ({ closeModal }) => {
   const navigate = useNavigate();
 
@@ -39,7 +38,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
       // Fetch matched phones from the backend
       const matchedResponse = await axios.get(
-        "http://localhost:4444/preference/matched-phones",
+        URL + "/preference/matched-phones",
         {
           params: { preferences: JSON.stringify(preferencesWithChoice) },
         }
@@ -72,7 +71,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
     try {
       // Fetch matched phones from the backend
       const matchedResponse = await axios.get(
-        "https://odd-jade-crow-slip.cyclic.app/preference/matched-phones",
+        URL + "/preference/matched-phones",
         {
           params: { preferences: JSON.stringify(preferences) },
         }
