@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { URL } from "../router/url";
+
+
 
 const Show = () => {
   const { id } = useParams();
@@ -8,7 +11,7 @@ const Show = () => {
   useEffect(() => {
     const fetchPhoneDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:4444/phone/${id}`);
+        const response = await fetch(URL + `/phone/${id}`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
