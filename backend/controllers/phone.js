@@ -1,4 +1,3 @@
-// controllers/preferences.js
 import express from "express";
 const router = express.Router();
 import Phone from "../models/phone.js";

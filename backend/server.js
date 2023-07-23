@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
-import PreferenceRoute from "./controllers/preference.js";
+import profileRoute from "./controllers/profile.js";
 import PhoneRoute from "./controllers/phone.js";
 
 // Get my env variables
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/phone", PhoneRoute);
-app.use("/preference", PreferenceRoute);
+app.use("/profile", profileRoute);
 
 // listener
 const PORT = process.env.PORT ?? 4444;

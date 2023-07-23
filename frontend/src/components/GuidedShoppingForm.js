@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import URL from "../router/url";
 const GuidedShoppingForm = ({ closeModal }) => {
   const navigate = useNavigate();
 
-  // State to hold preferences
-  const [preferences, setPreferences] = useState({
+  // State to hold profiles
+  const [profiles, setProfiles] = useState({
     budget: "",
     dataPlan: "",
     talkTime: "",
+    color: "",
   });
 
   // State to hold matched phones
@@ -20,29 +21,23 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
   const handlePhoneClick = async (phoneId) => {
     try {
-      const preferencesWithChoice = { ...preferences, choice: phoneId };
+      const profilesWithChoice = { ...profiles, choice: phoneId };
       const response = await axios.post(
-        URL + "/preference/preferences",
-        preferencesWithChoice
+        URL + "/profile/profiles",
+        profilesWithChoice
       );
-      console.log("Preference saved successfully:", response.data);
+      console.log("profile saved successfully:", response.data);
 
-      // Save preferences to localStorage after successful submission
-      localStorage.setItem(
-        "userPreferences",
-        JSON.stringify(preferencesWithChoice)
-      );
+      // Save profiles to localStorage after successful submission
+      localStorage.setItem("userprofiles", JSON.stringify(profilesWithChoice));
 
       // Update the state to show recommendations, etc.
       setFormSubmitted(true);
 
       // Fetch matched phones from the backend
-      const matchedResponse = await axios.get(
-        URL + "/preference/matched-phones",
-        {
-          params: { preferences: JSON.stringify(preferencesWithChoice) },
-        }
-      );
+      const matchedResponse = await axios.get(URL + "/profile/matched-phones", {
+        params: { profiles: JSON.stringify(profilesWithChoice) },
+      });
       setMatchedPhones(matchedResponse.data);
 
       navigate(`/phone/${phoneId}`);
@@ -51,51 +46,38 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
       closeModal();
     } catch (error) {
-      console.error("Error saving preference:", error.message);
+      console.error("Error saving profile:", error.message);
       // Handle error, show error message, etc.
     }
   };
-
-  // Load preferences from localStorage when the component mounts
-  useEffect(() => {
-    const savedPreferences = JSON.parse(
-      localStorage.getItem("userPreferences")
-    );
-    if (savedPreferences) {
-      setPreferences(savedPreferences);
-    }
-  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       // Fetch matched phones from the backend
-      const matchedResponse = await axios.get(
-        URL + "/preference/matched-phones",
-        {
-          params: { preferences: JSON.stringify(preferences) },
-        }
-      );
+      const matchedResponse = await axios.get(URL + "/profile/matched-phones", {
+        params: { profiles: JSON.stringify(profiles) },
+      });
       setMatchedPhones(matchedResponse.data);
 
       // Handle success, show recommendations, etc.
       setFormSubmitted(true);
     } catch (error) {
-      console.error("Error saving preference:", error.message);
+      console.error("Error saving profile:", error.message);
       // Handle error, show error message, etc.
     }
   };
 
   return (
     <div>
-      <div className="max-w-lg mx-2 p-4 m-2 bg-white shadow rounded-lg">
+      <div className="max-w-lg mx-2 p-4 m-2 bg-white shadow rounded-lg pb-10 sm: pb-20">
         {formSubmitted ? (
           matchedPhones.length > 0 ? (
             <div className="mt-8">
               <h2 className="text-2xl font-bold mb-4">
                 We think you'll love these
               </h2>
-              <ul className="grid grid-cols-2 gap-4 sm: gap-2">
+              <ul className="grid grid-cols-2 gap-1 sm:gap-4">
                 {/* Display matched phones */}
                 {matchedPhones.map((phone) => (
                   <li
@@ -132,24 +114,49 @@ const GuidedShoppingForm = ({ closeModal }) => {
           )
         ) : (
           // Show the form when it's not submitted
-          <div className="max-h-96 overflow-auto p-1">
+          <div className="max-h-96 p-1">
             <h2 className="text-xl font-bold mb-4">
               What are you looking for?
             </h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Budget in £:
+                  Budget:
                 </label>
                 <input
+                  placeholder="£"
                   type="number"
                   className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50"
-                  value={preferences.budget}
+                  value={profiles.budget}
                   onChange={(e) =>
-                    setPreferences({ ...preferences, budget: e.target.value })
+                    setProfiles({ ...profiles, budget: e.target.value })
                   }
                   required
                 />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Colour:
+                </label>
+                <select
+                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  value={profiles.color}
+                  onChange={(e) =>
+                    setProfiles({
+                      ...profiles,
+                      color: e.target.value,
+                    })
+                  }
+                  required
+                >
+                  <option value="">Select Colour</option>
+                  <option value="metal">Metal</option>
+                  <option value="sky">Sky Blue</option>
+                  <option value="mint">Mint</option>
+                  <option value="pink">Pink</option>
+                  <option value="purple">Purple</option>
+                </select>
               </div>
 
               <div className="mb-4">
@@ -158,10 +165,10 @@ const GuidedShoppingForm = ({ closeModal }) => {
                 </label>
                 <select
                   className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  value={preferences.dataPlan}
+                  value={profiles.dataPlan}
                   onChange={(e) =>
-                    setPreferences({
-                      ...preferences,
+                    setProfiles({
+                      ...profiles,
                       dataPlan: e.target.value,
                     })
                   }
@@ -180,10 +187,10 @@ const GuidedShoppingForm = ({ closeModal }) => {
                 </label>
                 <select
                   className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  value={preferences.talkTime}
+                  value={profiles.talkTime}
                   onChange={(e) =>
-                    setPreferences({
-                      ...preferences,
+                    setProfiles({
+                      ...profiles,
                       talkTime: e.target.value,
                     })
                   }
