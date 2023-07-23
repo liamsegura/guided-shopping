@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import URL from "../router/url";
 
 const GuidedShoppingForm = ({ closeModal }) => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
     try {
       const preferencesWithChoice = { ...preferences, choice: phoneId };
       const response = await axios.post(
-        "http://localhost:4444/preference/preferences",
+        URL + "/preference/preferences",
         preferencesWithChoice
       );
       console.log("Preference saved successfully:", response.data);
