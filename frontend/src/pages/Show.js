@@ -28,9 +28,9 @@ const Show = () => {
   }
 
   return (
-    <div className="flex flex-col py-30 px-10 md:flex-row items-center justify-center py-10 md:py-20">
+    <div className="flex flex-col py-3 px-10 md:flex-row items-center justify-center py-10 md:py-20">
       <div className="mt-6 md:mt-0 md:ml-10">
-        <img src="/mock.png" alt="phone" className="w-64 md:w-96" />
+        <img src="/mock.png" alt="phone" className="w-60 md:w-96" />
       </div>
       <div className="flex flex-col items-start md:justify-start">
         <h1>{phone.brand}</h1>

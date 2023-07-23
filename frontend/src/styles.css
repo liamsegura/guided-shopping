@@ -45,6 +45,24 @@ body {
     animation: growShrink 2s infinite;
   }
 
+
+  @keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+      
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  
+    .animate-slideIn {
+        animation: slideIn 600ms ease-in-out;
+      }
+  
+
   .speech-bubble {
   position: fixed;
 }
@@ -60,6 +78,6 @@ body {
   top: 98%;
   right: 24px;
   border-width: 0 12px 12px 12px;
-  border-color: transparent transparent #5a67d8 transparent;
+  border-color: transparent transparent rgb(79 70 229) transparent;
   transform: rotate(180deg);
 }

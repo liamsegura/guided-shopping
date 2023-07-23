@@ -18,8 +18,8 @@ const HelpPopup = () => {
     <>
       {/* Modal */}
       {isModalOpen ? (
-        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg mx-4 ">
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 ">
+          <div className="bg-white p-6 rounded-lg shadow-lg mx-4 animate-slideIn">
             <GuidedShoppingForm closeModal={closeModal} />
 
             <button
@@ -31,7 +31,7 @@ const HelpPopup = () => {
           </div>
         </div>
       ) : (
-        <div className="fixed bottom-4 right-4 p-8 bg-indigo-500 rounded-lg shadow-lg text-white animate-popIn speech-bubble">
+        <div className="fixed bottom-4 right-4 p-8 bg-indigo-600 rounded-lg shadow-lg text-white animate-popIn speech-bubble">
           <p className="text-xl">Need some help?</p>
           <button
             onClick={openModal}
