@@ -1,5 +1,4 @@
-// models/phone.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const phoneSchema = new mongoose.Schema({
   brand: {
@@ -26,8 +25,12 @@ const phoneSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  color: {
+    type: String,
+    required: true,
+  },
 });
 
-const Phone = mongoose.model('Phone', phoneSchema);
+const Phone = mongoose.model("Phone", phoneSchema);
 
 export default Phone;

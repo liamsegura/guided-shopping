@@ -24,7 +24,7 @@ function Index(props) {
           <Link to={`/phone/${phone._id}`} key={phone._id}>
             <div key={phone._id} style={{ padding: "10px", width: "150px" }}>
               <img
-                src="/mock.png"
+                src={phone.image}
                 alt={phone.brand}
                 style={{ width: "100%", marginBottom: "10px" }}
               />

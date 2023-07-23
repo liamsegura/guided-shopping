@@ -13,7 +13,7 @@ function Hero() {
         <ScrollButton />
       </div>
       <div className="mt-6 md:mt-0 md:ml-10 hidden md:block">
-        <img src="/mock.png" alt="phone" className="w-64 md:w-96" />
+        <img src="/sky.jpg" alt="phone" className="w-64 md:w-96" />
       </div>
     </div>
   );

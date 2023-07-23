@@ -104,7 +104,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
                     className={`bg-white p-2 rounded-lg shadow-lg`}
                   >
                     <img
-                      src="/mock.png"
+                      src={"/" + phone.image}
                       alt={phone.brand}
                       style={{ width: "100%", marginBottom: "10px" }}
                     />
