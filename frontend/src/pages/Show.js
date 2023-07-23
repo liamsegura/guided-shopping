@@ -49,9 +49,7 @@ const Show = () => {
         </p>
         <p>
           Talk Time:{" "}
-          {phone.talkTime > 0
-            ? `${phone.talkTime.toString().slice(0, -1)} minutes`
-            : "Unlimited"}
+          {phone.talkTime > 0 ? `${phone.talkTime} minutes` : "Unlimited"}
         </p>
         <p>Price: £{phone.budget}</p>
       </div>

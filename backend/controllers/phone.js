@@ -6,7 +6,7 @@ import Phone from "../models/phone.js";
 const catcher = (res) => (error) => res.status(400).json({ error });
 
 router.get("/", async (req, res) => {
-  const phones = await Phone.find({}).limit(40).catch(catcher(res));
+  const phones = await Phone.find({}).limit(36).catch(catcher(res));
   res.json(phones);
 });
 

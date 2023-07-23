@@ -119,7 +119,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
                     <p>
                       Talk Time:{" "}
                       {phone.talkTime > 0
-                        ? `${phone.talkTime.toString().slice(0, -1)} minutes`
+                        ? `${phone.talkTime} minutes`
                         : "Unlimited"}
                     </p>
                     <p>Price: £{phone.budget}</p>
