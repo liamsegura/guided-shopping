@@ -31,7 +31,7 @@ const HelpPopup = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center fixed bottom-4 right-4 p-8 bg-white rounded-lg shadow-2xl text-black animate-popIn speech-bubble border-2">
+        <div className="text-center fixed bottom-4 right-4 p-5 bg-white rounded-lg shadow-2xl text-black animate-popIn speech-bubble border-2">
           <p className="text-xl">Need some help?</p>
           <button
             onClick={openModal}
