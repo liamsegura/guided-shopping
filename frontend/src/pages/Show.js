@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { URL } from "../router/url";
+import URL from "../router/url"
 
 
 
