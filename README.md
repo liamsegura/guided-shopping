@@ -1,7 +1,7 @@
 <a href="https://ibb.co/hWQB2k8"><img src="https://i.ibb.co/VSngMdB/Screenshot-2023-07-23-at-19-00-46.png" alt="Screenshot-2023-07-23-at-19-00-46" border="0"></a>
 <a href="https://ibb.co/QkCDzKk"><img src="https://i.ibb.co/YXy0YLX/Screenshot-2023-07-23-at-19-00-55.png" alt="Screenshot-2023-07-23-at-19-00-55" border="0"></a>
 <a href="https://ibb.co/4SbNp29"><img src="https://i.ibb.co/bv4dXFq/Screenshot-2023-07-23-at-19-01-27.png" alt="Screenshot-2023-07-23-at-19-01-27" border="0"></a>
-<a href="https://ibb.co/m6jfLkL"><img src="https://i.ibb.co/ChcRkgk/Screenshot-2023-07-23-at-19-01-49.png" alt="Screenshot-2023-07-23-at-19-01-49" style="width: 50%" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>share picture</a><br />
+<a href="https://ibb.co/m6jfLkL"><img src="https://i.ibb.co/ChcRkgk/Screenshot-2023-07-23-at-19-01-49.png" alt="Screenshot-2023-07-23-at-19-01-49" style="width: 50%" border="0"></a><br />
 
 # Functionality
 
