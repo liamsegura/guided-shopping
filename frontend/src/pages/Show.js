@@ -24,7 +24,11 @@ const Show = () => {
   }, [id]);
 
   if (!phone) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex flex-col py-3 px-10 md:flex-row items-center justify-center py-10 md:py-20">
+        <img src={"/Loading_icon.gif"} alt="loading" className="w-60 md:w-96" />
+      </div>
+    );
   }
 
   console.log(phone);
@@ -37,8 +41,18 @@ const Show = () => {
       <div className="flex flex-col items-start md:justify-start">
         <h1>{phone.brand}</h1>
         <h2>{phone.model}</h2>
-        <p>Data: {phone.dataPlan}</p>
-        <p>Talk Time: {phone.talkTime}</p>
+        <p>
+          Data:{" "}
+          {phone.dataPlan > 0
+            ? phone.dataPlan.toString().slice(0, -3) + "GB"
+            : "Unlimited"}
+        </p>
+        <p>
+          Talk Time:{" "}
+          {phone.talkTime > 0
+            ? `${phone.dataPlan.toString().slice(0, -1)} minutes`
+            : "Unlimited"}
+        </p>
         <p>Price: £{phone.budget}</p>
       </div>
     </div>

@@ -110,8 +110,18 @@ const GuidedShoppingForm = ({ closeModal }) => {
                     />
                     <h3>{phone.brand}</h3>
                     <h3>{phone.model}</h3>
-                    <p>Data: {phone.dataPlan}</p>
-                    <p>Talk Time: {phone.talkTime}</p>
+                    <p>
+                      Data:{" "}
+                      {phone.dataPlan > 0
+                        ? phone.dataPlan.toString().slice(0, -3) + "GB"
+                        : "Unlimited"}
+                    </p>
+                    <p>
+                      Talk Time:{" "}
+                      {phone.talkTime > 0
+                        ? `${phone.dataPlan.toString().slice(0, -1)} minutes`
+                        : "Unlimited"}
+                    </p>
                     <p>Price: £{phone.budget}</p>
                   </li>
                 ))}
@@ -123,7 +133,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
         ) : (
           // Show the form when it's not submitted
           <div className="max-h-96 overflow-auto p-1">
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="text-xl font-bold mb-4">
               What are you looking for?
             </h2>
             <form onSubmit={handleSubmit}>
@@ -158,9 +168,9 @@ const GuidedShoppingForm = ({ closeModal }) => {
                   required
                 >
                   <option value="">Select Data Plan</option>
-                  <option value="2GB">2GB</option>
-                  <option value="5GB">5GB</option>
-                  <option value="Unlimited">Unlimited</option>
+                  <option value="2000">2GB</option>
+                  <option value="5000">5GB</option>
+                  <option value="0">Unlimited</option>
                 </select>
               </div>
 
@@ -180,8 +190,8 @@ const GuidedShoppingForm = ({ closeModal }) => {
                   required
                 >
                   <option value="">Select Talk Time</option>
-                  <option value="500 minutes">500 minutes</option>
-                  <option value="Unlimited">Unlimited</option>
+                  <option value="500">500 minutes</option>
+                  <option value="0">Unlimited</option>
                 </select>
               </div>
 
