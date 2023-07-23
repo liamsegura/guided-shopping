@@ -95,13 +95,13 @@ const GuidedShoppingForm = ({ closeModal }) => {
               <h2 className="text-2xl font-bold mb-4">
                 We think you'll love these
               </h2>
-              <ul className="grid gap-4 grid-cols-2">
+              <ul className="grid grid-cols-2 gap-4 sm: gap-2">
                 {/* Display matched phones */}
                 {matchedPhones.map((phone) => (
                   <li
                     key={phone._id}
                     onClick={() => handlePhoneClick(phone._id)}
-                    className={`bg-white p-4 rounded-lg shadow-lg`}
+                    className={`bg-white p-2 rounded-lg shadow-lg`}
                   >
                     <img
                       src="/mock.png"
