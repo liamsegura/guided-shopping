@@ -4,6 +4,10 @@
 
 /* styles.css */
 
+body {
+    background-color: white;
+  }
+
 @keyframes popIn {
     0% {
       transform: scale(0);
@@ -36,3 +40,22 @@
   .animate-growShrink {
     animation: growShrink 2s infinite;
   }
+
+  .speech-bubble {
+  position: fixed;
+}
+
+.speech-bubble::before,
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+}
+
+.speech-bubble::before {
+  top: 98%;
+  right: 24px;
+  border-width: 0 12px 12px 12px;
+  border-color: transparent transparent #5a67d8 transparent;
+  transform: rotate(180deg);
+}

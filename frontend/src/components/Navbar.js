@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,8 +11,9 @@ const Navbar = () => {
   return (
     <nav className="py-4 px-8 md:px-16">
       <div className="flex justify-between items-center">
-        <div className="text-indigo-600 font-bold text-xl">Guided</div>
-
+        <Link to={"/"}>
+          <div className="text-indigo-600 font-bold text-xl">Guided</div>
+        </Link>
         {/* Hamburger Menu */}
         <div className="md:hidden">
           <button
@@ -34,32 +36,30 @@ const Navbar = () => {
 
         {/* Full Menu */}
         <div className="hidden md:flex space-x-4">
-         
-          <a href="#" className="hover:text-gray-600">
+          <Link to={"/"} className="hover:text-gray-600">
             About
-          </a>
-          <a href="#" className="hover:text-gray-600">
+          </Link>
+          <Link to={"/"} className="hover:text-gray-600">
             Contact
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden mt-4">
-      
-          <a
-            href="#"
+          <Link
+            to={"/"}
             className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
           >
             About
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to={"/"}
             className="block px-4 py-2 text-black rounded-md hover:bg-indigo-500 hover:text-white"
           >
             Contact
-          </a>
+          </Link>
         </div>
       )}
     </nav>
