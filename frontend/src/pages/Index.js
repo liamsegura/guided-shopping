@@ -1,28 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
-import React, { useEffect } from "react";
-import ReactGA from "react-ga";
-
-const TRACKING_ID = "G-3Q65LMK3C5";
-ReactGA.initialize(TRACKING_ID);
+import React from "react";
 
 function Index(props) {
   const phones = useLoaderData();
-
-  useEffect(() => {
-    // Track pageview when the component is mounted
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
-
-  const handlePhoneClick = (phoneId) => {
-    // Track phone click event
-    ReactGA.event({
-      category: "Phone",
-      action: "Click",
-      label: `Phone ID: ${phoneId}`,
-    });
-  };
 
   if (!phones) {
     return (

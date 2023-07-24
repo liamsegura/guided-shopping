@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import URL from "../router/url";
+import ReactGA from "react-ga";
+
 const GuidedShoppingForm = ({ closeModal }) => {
   const navigate = useNavigate();
 
@@ -39,6 +41,13 @@ const GuidedShoppingForm = ({ closeModal }) => {
         params: { profiles: JSON.stringify(profilesWithChoice) },
       });
       setMatchedPhones(matchedResponse.data);
+
+      // Track form submission event
+      ReactGA.event({
+        category: "Form",
+        action: "Submitted",
+        label: "Guided Shopping Form", // You can add a label to identify this specific form
+      });
 
       navigate(`/phone/${phoneId}`);
 
