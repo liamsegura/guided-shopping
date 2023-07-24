@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import profileRoute from "./controllers/profile.js";
 import PhoneRoute from "./controllers/phone.js";
+import analyticsRoutes from "./routes/analytics.js";
 
 // Get my env variables
 dotenv.config();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/phone", PhoneRoute);
 app.use("/profile", profileRoute);
+app.use("/api", analyticsRoutes);
 
 // listener
 const PORT = process.env.PORT ?? 4444;

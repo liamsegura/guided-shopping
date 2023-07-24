@@ -42,11 +42,22 @@ const GuidedShoppingForm = ({ closeModal }) => {
       });
       setMatchedPhones(matchedResponse.data);
 
-      // Track form submission event
+      // Track form submission event with Google Analytics
       ReactGA.event({
         category: "Form",
         action: "Submitted",
-        label: "Guided Shopping Form", // You can add a label to identify this specific form
+        label: "Guided Shopping Form",
+      });
+
+      // Send the event data to the backend
+      const eventData = {
+        category: "Form",
+        action: "Submitted",
+        label: "Guided Shopping Form",
+      };
+
+      axios.post("/api/track-event", eventData).then((response) => {
+        console.log(response.data);
       });
 
       navigate(`/phone/${phoneId}`);
