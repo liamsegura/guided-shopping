@@ -2,7 +2,25 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import URL from "../router/url";
-const GuidedShoppingForm = ({ closeModal }) => {
+
+interface GuidedShoppingFormProps {
+  closeModal: () => void;
+}
+
+interface Phone {
+  _id: string;
+  brand: string;
+  model: string;
+  budget: number;
+  dataPlan: number;
+  talkTime: number;
+  image: string;
+  color: string;
+}
+
+const GuidedShoppingForm: React.FC<GuidedShoppingFormProps> = ({
+  closeModal,
+}) => {
   const navigate = useNavigate();
 
   // State to hold profiles
@@ -14,12 +32,12 @@ const GuidedShoppingForm = ({ closeModal }) => {
   });
 
   // State to hold matched phones
-  const [matchedPhones, setMatchedPhones] = useState([]);
+  const [matchedPhones, setMatchedPhones] = useState<Phone[]>([]);
 
   // State to track whether the form has been submitted
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handlePhoneClick = async (phoneId) => {
+  const handlePhoneClick = async (phoneId: string) => {
     try {
       const profilesWithChoice = { ...profiles, choice: phoneId };
       const response = await axios.post(
@@ -46,12 +64,17 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
       closeModal();
     } catch (error) {
-      console.error("Error saving profile:", error.message);
-      // Handle error, show error message, etc.
+      if (error instanceof Error) {
+        console.error("Error saving profile:", error.message);
+        // Handle error, show error message, etc.
+      } else {
+        console.error("Unknown error occurred:", error);
+        // Handle other types of errors if needed
+      }
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       // Fetch matched phones from the backend
@@ -63,8 +86,13 @@ const GuidedShoppingForm = ({ closeModal }) => {
       // Handle success, show recommendations, etc.
       setFormSubmitted(true);
     } catch (error) {
-      console.error("Error saving profile:", error.message);
-      // Handle error, show error message, etc.
+      if (error instanceof Error) {
+        console.error("Error saving profile:", error.message);
+        // Handle error, show error message, etc.
+      } else {
+        console.error("Unknown error occurred:", error);
+        // Handle other types of errors if needed
+      }
     }
   };
 
@@ -78,7 +106,6 @@ const GuidedShoppingForm = ({ closeModal }) => {
                 We think you'll love these
               </h2>
               <ul className="grid grid-cols-2 gap-1 sm:gap-4">
-                {/* Display matched phones */}
                 {matchedPhones.map((phone) => (
                   <li
                     key={phone._id}

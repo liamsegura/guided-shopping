@@ -1,3 +1,4 @@
+import React from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -6,6 +7,7 @@ import {
 import App from "../App";
 import Index from "../pages/Index";
 import Show from "../pages/Show";
+
 import { indexLoader, showLoader } from "./loaders";
 
 const router = createBrowserRouter(
@@ -13,6 +15,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />}>
         <Route path="" element={<Index />} loader={indexLoader} />
+        {/* @ts-ignore */}
         <Route path="/phone/:id" element={<Show />} loader={showLoader} />
       </Route>
     </>

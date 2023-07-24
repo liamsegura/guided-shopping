@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import URL from "../router/url";
 
+interface Phone {
+  _id: string;
+  brand: string;
+  model: string;
+  budget: number;
+  dataPlan: number;
+  talkTime: number;
+  image: string;
+  color: string;
+}
+
 const Show = () => {
   const { id } = useParams();
-  const [phone, setPhone] = useState(null);
+  const [phone, setPhone] = useState<Phone | null>(null);
 
   useEffect(() => {
     const fetchPhoneDetails = async () => {
