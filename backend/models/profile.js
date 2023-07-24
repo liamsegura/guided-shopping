@@ -7,6 +7,7 @@ const profileSchema = new Schema({
   talkTime: Number,
   color: String,
   choice: { type: Schema.Types.ObjectId, ref: "Phone" },
+  analytics: [{}],
 });
 
 const profile = model("profile", profileSchema);

@@ -1,7 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import router from "./router/router";
+import { EventProvider } from "./EventContext";
 
 // Ensure the document is available in a browser environment
 if (typeof document !== "undefined") {
@@ -10,7 +11,9 @@ if (typeof document !== "undefined") {
     const root = ReactDOM.createRoot(rootElement);
     root.render(
       <React.StrictMode>
-        <RouterProvider router={router} />
+        <EventProvider>
+          <RouterProvider router={router} />
+        </EventProvider>
       </React.StrictMode>
     );
   }

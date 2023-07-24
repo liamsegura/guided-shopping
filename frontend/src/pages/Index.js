@@ -1,9 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
-import React from "react";
+import React, { useContext } from "react";
+import EventContext from "../EventContext";
 
 function Index(props) {
+  const { handlePhoneClick } = useContext(EventContext);
   const phones = useLoaderData();
 
   if (!phones) {

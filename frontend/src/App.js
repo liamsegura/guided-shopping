@@ -2,26 +2,17 @@ import { Outlet } from "react-router-dom";
 import "./styles.css";
 import Navbar from "./components/Navbar";
 import HelpPopup from "./components/HelpPopup";
-import ReactGA from "react-ga";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import ReactGA from "react-ga";
-
-const TRACKING_ID = "G-3Q65LMK3C5";
-ReactGA.initialize(TRACKING_ID);
+import EventContext from "./EventContext"; // Import EventProvider and EventContext
+import { useContext } from "react"; // Import useContext hook
 
 function App() {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Track pageview when the component is mounted
-    ReactGA.pageview(location.pathname + location.search);
-  }, [location]);
+  const { handleOpenForm } = useContext(EventContext); // Use the useContext hook to access handleHelpClick
 
   return (
     <>
       <Navbar />
-      <HelpPopup />
+      <HelpPopup onClick={handleOpenForm} />
+      {/* Pass the handleHelpClick function to HelpPopup */}
       <div className="App" style={{ backgroundColor: "white" }}>
         <Outlet />
       </div>

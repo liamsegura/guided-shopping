@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-scroll";
 
-const ScrollButton = () => {
+const ScrollButton = ({ onClick }) => {
   return (
     <div className="flex justify-center mt-6">
       <Link
+        onClick={onClick}
         activeClass="active"
         to="sectionBelow"
         spy={true}

@@ -31,8 +31,6 @@ const Show = () => {
     );
   }
 
-  console.log(phone);
-
   return (
     <div className="flex flex-col py-3 px-10 md:flex-row items-center justify-center py-10 md:py-20">
       <div className="mt-6 md:mt-0 md:ml-10">

@@ -2,16 +2,21 @@
 import React from "react";
 import { useState } from "react";
 import GuidedShoppingForm from "./GuidedShoppingForm";
+import EventContext from "../EventContext"; // Import EventContext
+import { useContext } from "react"; // Import useContext hook
 
-const HelpPopup = () => {
+const HelpPopup = ({ onClick }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { handleCloseForm } = useContext(EventContext); // Use the useContext hook to access handleFormClose
 
   const openModal = () => {
     setIsModalOpen(true);
+    onClick();
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    handleCloseForm();
   };
 
   return (

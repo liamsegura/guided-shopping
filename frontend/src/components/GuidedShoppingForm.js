@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import URL from "../router/url";
-import ReactGA from "react-ga";
+import EventContext from "../EventContext";
+import { useContext } from "react";
 
 const GuidedShoppingForm = ({ closeModal }) => {
   const navigate = useNavigate();
+
+  const { handleSubmitForm, eventData } = useContext(EventContext);
 
   // State to hold profiles
   const [profiles, setProfiles] = useState({
@@ -13,6 +16,7 @@ const GuidedShoppingForm = ({ closeModal }) => {
     dataPlan: "",
     talkTime: "",
     color: "",
+    analytics: eventData,
   });
 
   // State to hold matched phones
@@ -23,7 +27,27 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
   const handlePhoneClick = async (phoneId) => {
     try {
-      const profilesWithChoice = { ...profiles, choice: phoneId };
+      const currentTime = Date.now();
+      const duration = eventData.length
+        ? currentTime - eventData[0].startTime
+        : 0;
+
+      // Create a new object with the updated profiles and analytics
+      const profilesWithChoice = {
+        ...profiles,
+        choice: phoneId,
+        analytics: [
+          ...profiles.analytics, // Include any previous analytics data
+          {
+            eventType: "choice",
+            choice: phoneId,
+            startTime: currentTime,
+            timestamp: currentTime,
+            duration,
+          },
+        ],
+      };
+
       const response = await axios.post(
         URL + "/profile/profiles",
         profilesWithChoice
@@ -41,24 +65,6 @@ const GuidedShoppingForm = ({ closeModal }) => {
         params: { profiles: JSON.stringify(profilesWithChoice) },
       });
       setMatchedPhones(matchedResponse.data);
-
-      // Track form submission event with Google Analytics
-      ReactGA.event({
-        category: "Form",
-        action: "Submitted",
-        label: "Guided Shopping Form",
-      });
-
-      // Send the event data to the backend
-      const eventData = {
-        category: "Form",
-        action: "Submitted",
-        label: "Guided Shopping Form",
-      };
-
-      axios.post("/api/track-event", eventData).then((response) => {
-        console.log(response.data);
-      });
 
       navigate(`/phone/${phoneId}`);
 
@@ -82,6 +88,8 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
       // Handle success, show recommendations, etc.
       setFormSubmitted(true);
+      // Call the handleSubmitForm function to trigger the formSubmit event
+      handleSubmitForm(profiles);
     } catch (error) {
       console.error("Error saving profile:", error.message);
       // Handle error, show error message, etc.

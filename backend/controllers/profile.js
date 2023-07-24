@@ -25,6 +25,7 @@ router.post("/profiles", async (req, res) => {
 
     // Save the profile with the associated phone's _id
     const newprofile = await Profile.create(newprofileData);
+    console.log(newprofile);
     res.status(201).json(newprofile);
   } catch (error) {
     console.error("Error saving profile:", error);
