@@ -8,7 +8,7 @@ import Phone from "../models/phone.js";
 router.post("/profiles", async (req, res) => {
   try {
     const newprofileData = req.body;
-    console.log(newprofileData);
+    console.log(newprofileData, "newprofileData");
     const selectedPhone = newprofileData.choice;
     if (!selectedPhone) {
       return res.status(400).json({ error: "Choice not provided" });
