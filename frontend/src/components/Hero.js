@@ -17,7 +17,7 @@ function Hero() {
         <ScrollButton onClick={handleProductButtonClick} />
       </div>
       <div className="mt-6 md:mt-0 md:ml-20 hidden md:block">
-        <img src="/sky.png" alt="phone" className="w-64 md:w-[20rem]" />
+        <img src="/mint.png" alt="phone" className="w-64 md:w-[20rem]" />
       </div>
     </div>
   );

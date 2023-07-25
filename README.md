@@ -23,12 +23,12 @@
 
 # Technologies Used
 
-- React.js
-  – Node.js<br>
-  – Express.js<br>
-  – MongoDB: NoSQL database for storing user and workout data<br>
-  – Mongoose: Object Data Modeling (ODM) library for MongoDB, providing relational database features<br>
-  – HTML/CSS: Front-end languages for creating the user interface<br>
+– React.js<br>
+– Node.js<br>
+– Express.js<br>
+– MongoDB: NoSQL database for storing user and workout data<br>
+– Mongoose: Object Data Modeling (ODM) library for MongoDB, providing relational database features<br>
+– HTML/CSS: Front-end languages for creating the user interface<br>
 
 # Project Overview
 
