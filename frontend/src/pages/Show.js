@@ -42,7 +42,7 @@ const Show = () => {
       </div>
       <div className="mt-6 md:mt-0 sm:ml-8 lg:ml-16">
         <h1 className="text-2xl md:text-3xl font-bold">{phone.brand}</h1>
-        <h2 className="text-xl md:text-2xl font-bold mt-2">{phone.model}</h2>
+        <h2 className="text-xl md:text-2xl font-bold mt-1">{phone.model}</h2>
         <p className="mt-2">
           Data:{" "}
           {phone.dataPlan > 0

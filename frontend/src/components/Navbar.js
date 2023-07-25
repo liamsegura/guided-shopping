@@ -71,7 +71,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <Link onClick={handleHome} to={"/"}>
               <div className="px-4 py-2">Home</div>
             </Link>
-            <Link onClick={handleHome} to={"/"}>
+            <Link
+              to={"https://github.com/liamsegura/guided-shopping"}
+              target="_blank"
+            >
               <div className="px-4 py-2">Contribute</div>
             </Link>
             {/* Add more menu links here */}
@@ -105,6 +108,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <Link
               onClick={handleHome}
               to={"https://github.com/liamsegura/guided-shopping"}
+              target="_blank"
             >
               <div onClick={handleMenuClick} className="block mr-4">
                 Contribute
