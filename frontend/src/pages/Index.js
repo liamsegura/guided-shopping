@@ -46,23 +46,27 @@ function Index(props) {
               style={{ padding: "10px", width: "150px" }}
             >
               <img
-                src={phone.image}
+                src={`${phone.image.slice(0, -3)}png`}
                 alt={phone.brand}
-                style={{ width: "100%", marginBottom: "10px" }}
+                className="w-full mb-4"
               />
-              <h3>{phone.brand}</h3>
-              <h3>{phone.model}</h3>
-              <p>
-                Data:{" "}
-                {phone.dataPlan > 0
-                  ? phone.dataPlan.toString().slice(0, -3) + "GB"
-                  : "Unlimited"}
-              </p>
-              <p>
-                Talk Time:{" "}
-                {phone.talkTime > 0 ? `${phone.talkTime} minutes` : "Unlimited"}
-              </p>
-              <p>Price: £{phone.budget}</p>
+              <div className="ml-2">
+                <h3 className="font-semibold">{phone.brand}</h3>
+                <h3 className="font-semibold">{phone.model}</h3>
+                <p>
+                  Data:{" "}
+                  {phone.dataPlan > 0
+                    ? phone.dataPlan.toString().slice(0, -3) + "GB"
+                    : "Unlimited"}
+                </p>
+                <p>
+                  Talk Time:{" "}
+                  {phone.talkTime > 0
+                    ? `${phone.talkTime} minutes`
+                    : "Unlimited"}
+                </p>
+                <p>Price: £{phone.budget}</p>
+              </div>
             </div>
           </Link>
         ))}

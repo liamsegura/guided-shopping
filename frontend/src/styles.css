@@ -4,14 +4,28 @@
 
 /* styles.css */
 
-html{
-    background-color: white!important;
-    font-family: 'Poppins', sans-serif;
+/* Default to light mode */
+:root {
+  --bg-color: rgb(244, 244, 244);
+  --text-color: rgb(25, 25, 25);
+}
+
+/* Dark mode styles */
+.dark-mode {
+  --bg-color: rgb(25, 25, 25);
+  --text-color: rgb(244, 244, 244);
 }
 
 body {
-    background-color: white;
-  }
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.dark-mode {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 
 @keyframes popIn {
     0% {
