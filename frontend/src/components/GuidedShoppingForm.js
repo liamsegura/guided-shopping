@@ -5,7 +5,7 @@ import URL from "../router/url";
 import EventContext from "../EventContext";
 import { useContext } from "react";
 
-const GuidedShoppingForm = ({ closeModal }) => {
+const GuidedShoppingForm = ({ closeModal, darkMode }) => {
   const navigate = useNavigate();
 
   const { handleSubmitForm, eventData } = useContext(EventContext);
@@ -98,10 +98,19 @@ const GuidedShoppingForm = ({ closeModal }) => {
 
   return (
     <div>
-      <div className="max-w-lg mx-2 p-4 m-2 bg-white shadow rounded-lg pb-10 sm: pb-20">
+      <div
+        className={`${
+          darkMode
+            ? "bg-neutral-800 text-white shadow-white"
+            : "bg-white shadow"
+        } max-w-lg mx-2 p-4 m-2 rounded-lg pb-10 sm: pb-20`}
+      >
         {formSubmitted ? (
           matchedPhones.length > 0 ? (
-            <div className="mt-8">
+            <div
+              className={`${darkMode ? "bg-neutral-800 text-white" : "bg-white"}
+           mt-8`}
+            >
               <h2 className="text-2xl font-bold mb-4">
                 We think you'll love these
               </h2>
@@ -111,12 +120,16 @@ const GuidedShoppingForm = ({ closeModal }) => {
                   <li
                     key={phone._id}
                     onClick={() => handlePhoneClick(phone._id)}
-                    className={`bg-white p-2 rounded-lg shadow-lg`}
+                    className={`p-2 rounded-lg shadow-lg`}
                   >
                     <img
-                      src={"/" + phone.image}
+                      src={"/" + phone.image.slice(0, -3) + "png"}
                       alt={phone.brand}
-                      style={{ width: "100%", marginBottom: "10px" }}
+                      style={{
+                        width: "100%",
+                        marginBottom: "10px",
+                        padding: "1rem",
+                      }}
                     />
                     <h3>{phone.brand}</h3>
                     <h3>{phone.model}</h3>
@@ -142,19 +155,28 @@ const GuidedShoppingForm = ({ closeModal }) => {
           )
         ) : (
           // Show the form when it's not submitted
-          <div className="max-h-96 p-1">
+          <div
+            className={`${darkMode ? "bg-neutral-800 text-white" : "bg-white"}
+          max-h-96 p-1`}
+          >
             <h2 className="text-xl font-bold mb-4">
               What are you looking for?
             </h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label
+                  className={`${darkMode ? "text-white" : "text-gray-700"}
+          max-h-96 p-1 block text-sm font-medium`}
+                >
                   Budget:
                 </label>
                 <input
                   placeholder="£"
                   type="number"
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50"
+                  className={`${
+                    darkMode ? "text-white bg-neutral-900" : "text-gray-700"
+                  }
+                  max-h-96 p-1 block text-sm font-medium w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50`}
                   value={profiles.budget}
                   onChange={(e) =>
                     setProfiles({ ...profiles, budget: e.target.value })
@@ -164,11 +186,17 @@ const GuidedShoppingForm = ({ closeModal }) => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label
+                  className={`${darkMode ? "text-white" : "text-gray-700"}
+          max-h-96 p-1 block text-sm font-medium`}
+                >
                   Colour:
                 </label>
                 <select
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
+                  className={`${
+                    darkMode ? "text-white bg-neutral-900" : "text-gray-700"
+                  }
+                  max-h-96 p-1 block text-sm font-medium w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50`}
                   value={profiles.color}
                   onChange={(e) =>
                     setProfiles({
@@ -188,11 +216,17 @@ const GuidedShoppingForm = ({ closeModal }) => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label
+                  className={`${darkMode ? "text-white" : "text-gray-700"}
+          max-h-96 p-1 block text-sm font-medium`}
+                >
                   Data Plan:
                 </label>
                 <select
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
+                  className={`${
+                    darkMode ? "text-white bg-neutral-900" : "text-gray-700"
+                  }
+                  max-h-96 p-1 block text-sm font-medium w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50`}
                   value={profiles.dataPlan}
                   onChange={(e) =>
                     setProfiles({
@@ -210,11 +244,17 @@ const GuidedShoppingForm = ({ closeModal }) => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
+                <label
+                  className={`${darkMode ? "text-white" : "text-gray-700"}
+          max-h-96 p-1 block text-sm font-medium`}
+                >
                   Talk Time:
                 </label>
                 <select
-                  className="w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50"
+                  className={`${
+                    darkMode ? "text-white bg-neutral-900" : "text-gray-700"
+                  }
+                  max-h-96 p-1 block text-sm font-medium w-full px-3 py-2 mt-1 rounded-lg border-gray-300 focus:border-white focus:ring focus:ring-white focus:ring-opacity-50`}
                   value={profiles.talkTime}
                   onChange={(e) =>
                     setProfiles({

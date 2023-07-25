@@ -2,8 +2,8 @@ import URL from "./url";
 
 export const indexLoader = async () => {
   const response = await fetch(URL + "/phone");
-  const phones = await response.json();
-  return phones;
+  const { phones, popularPhones } = await response.json();
+  return { phones, popularPhones };
 };
 
 export const showLoader = async ({ params }) => {

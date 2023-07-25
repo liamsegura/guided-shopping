@@ -20,7 +20,7 @@ function App() {
     <div className={darkMode ? "dark-mode" : ""}>
       <div className="App">
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <HelpPopup onClick={handleOpenForm} />
+        <HelpPopup onClick={handleOpenForm} darkMode={darkMode} />
         <Outlet />
       </div>
     </div>
